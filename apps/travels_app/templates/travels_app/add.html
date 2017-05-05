@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ADD</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    </head>
+    <body>
+        <h1>Add Travel Plans</h1>
+        <div id="maincontent">
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        <form action="{% url 'travel:new' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="destination" placeholder="Destination">
+        <input type="text" name="plan" placeholder="Description">
+        <label for="">Travel Start Date</label><input type="date" name="travel_start">
+        <label for="">Travel End Date</label><input type="date" name="travel_end">
+        <input type="submit" name="" value="Add Plans">
+        </form>
+
+        <a href="{% url 'travel:index' %}">Back</a>
+    </body>
+</html>

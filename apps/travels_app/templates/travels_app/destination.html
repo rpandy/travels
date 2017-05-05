@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Destination</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    </head>
+    <body>
+        {% for plan in user_plans %}
+        <h1>{{plan.destination}}</h1>
+        <ul>
+            <li>Planned by: {{plan.user_id.name}}</li>
+            <li>Travel Plans: {{plan.plan}}</li>
+            <li>Start Date: {{plan.travel_start}}</li>
+            <li>End Date: {{plan.travel_end}}</li>
+        </ul>
+        {% endfor %}
+        <li><a href="{% url 'travel:index' %}">Home</a></li>
+        <li><a href="{% url 'travel:logout' %}">Logout</a></li>
+
+    </body>
+</html>

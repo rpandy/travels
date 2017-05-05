@@ -1,0 +1,36 @@
+body{
+    padding: 100px 200px 200px 200px;
+    background-color: #7d4627;
+}
+
+h1{
+    text-align: center
+}
+
+#container{
+    background-color: #a8b6bf;
+    padding:50px;
+    border-radius: 100px;
+}
+
+#header{
+    background-color: #c9d8c5;
+    padding:25px;
+    border-radius: 100px;
+}
+
+#maincontent{
+    background-color: #edd9c0;
+    margin-top: 20px;
+    padding:35px;
+    border-radius: 100px;
+}
+
+#success_message{
+    text-align: center;
+}
+
+#edd9c0
+#c9d8c5
+#a8b6bf
+#7d4627

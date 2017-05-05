@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Travels</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    </head>
+    <body>
+        <li><a href="{% url 'travel:logout' %}">Logout</a></li>
+
+        <h1>Hello {{request.session.name}}</h1>
+
+        <h3>{{request.session.name}}'s Travel Plans</h3>
+        <table>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+            {% for plan in current_user_plans %}
+            <tr>
+                <td>
+                    <a href="{% url 'travel:destination' plan.id %}">{{plan.destination}}</a>
+                </td>
+                <td>
+                    {{plan.plan}}
+                </td>
+                <td>
+                    {{plan.travel_start}}
+                </td>
+                <td>
+                    {{plan.travel_end}}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <li><a href="{% url 'travel:add' %}">Add Plans</a></li>
+        </ul>
+        <h3>Other Users' Travel Plans</h3>
+
+        <table>
+            <th>Name</th>
+            <th>Destination</th>
+            <th>Travel Start Date</th>
+            <th>Travel End Date</th>
+            <th>Plan</th>
+            <th>Do You Want to Join?</th>
+            {% for plan in other_user_plans %}
+            <tr>
+                <td>
+                    {{plan.user_id.name}}
+                </td>
+                <td>
+                    <a href="{% url 'travel:destination' plan.id %}">{{plan.destination}}</a>
+                </td>
+                <td>
+                    {{plan.plan}}
+                </td>
+                <td>
+                    {{plan.travel_start}}
+                </td>
+                <td>
+                    {{plan.travel_end}}
+                </td>
+                <td>
+                    <a href="{% url 'travel:join' plan.id %}">Join</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <ul>
+        <!-- This is the CORRECT method
+        {{current_user_plans.id}}
+        {{current_user_plans.first_name}}
+
+        {% for plan in current_user_plans %}
+        <li>{{plan.plan}} {{plan.travel_start}}</li>
+        {% endfor %} -->
+
+    </body>
+</html>
